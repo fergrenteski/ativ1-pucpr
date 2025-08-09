@@ -63,9 +63,15 @@ public class Restaurant {
                         // Receber pagamento e calcular troco
                         System.out.print("Digite o valor recebido: R$ ");
                         double recebido = sc.nextDouble();
-                        double troco = recebido - order.getTotal();
-                        System.out.printf("Troco: R$ %.2f\n", troco);
-
+                        if(recebido > order.getTotal()) {
+                            double troco = recebido - order.getTotal();
+                            System.out.printf("Troco: R$ %.2f\n", troco);
+                        } else if(recebido < order.getTotal()) {
+                            double falta = order.getTotal() - recebido;
+                            System.out.printf("Falta: R$ %.2f\n", falta);
+                        } else if (recebido == order.getTotal()) {
+                            System.out.println("Valor igual");
+                        }
                         System.out.println("--------------");
                         break;
                     }
